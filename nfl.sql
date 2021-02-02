@@ -2,7 +2,7 @@
 select name from teams;
 
 -- 2. List the stadium name and head coach of all NFC teams
-select stadium, head_coach from teams;
+select stadium, head_coach from teams where conference = 'NFC';
 
 -- 3. List the head coaches of the AFC South
 select * from teams;
