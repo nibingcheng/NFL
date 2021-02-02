@@ -36,13 +36,32 @@ SELECT name, position FROM players
 -- HUNGRY FOR MORE!!!!!!!
 
 -- 9. The player with the highest salary in the NFL
+SELECT name FROM players	
+	ORDER BY salary DESC
+	fetch first 1 row only;
 
 -- 10. The name and position of the first 100 players with the lowest salaries
+SELECT name, position FROM players	
+	ORDER BY salary ASC
+	fetch first 100 row only;
 
 -- 11. The average salary for a DE in the nfl
-
+SELECT CAST(AVG(salary) AS DECIMAL (12, 2)) FROM players
+	WHERE position = 'DE';
+    
 -- 12. The names of all the players on the Buffalo Bills
+select players.name from players, teams 
+	where players.team_id = teams.id
+	AND teams.name = 'Buffalo Bills';	
 
 -- 13. The total salary of all players on the New York Giants
+select sum(players.salary) from players, teams 
+	where players.team_id = teams.id
+	AND teams.name = 'New York Giants';	
 
 -- 14. The player with the lowest salary on the Green Bay Packers
+select players.name from players, teams 
+	where players.team_id = teams.id
+	AND teams.name = 'Green Bay Packers'
+	ORDER BY players.salary ASC
+	limit 1;	
